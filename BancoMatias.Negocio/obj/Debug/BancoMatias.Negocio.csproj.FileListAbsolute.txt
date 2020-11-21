@@ -1,0 +1,13 @@
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Negocio.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Negocio.pdb
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Datos.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Entidades.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Datos.pdb
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\BancoMatias.Entidades.pdb
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\obj\Debug\BancoMatias.Negocio.csprojAssemblyReference.cache
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\obj\Debug\BancoMatias.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\obj\Debug\BancoMatias.Negocio.csproj.CopyComplete
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\obj\Debug\BancoMatias.Negocio.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Negocio\obj\Debug\BancoMatias.Negocio.pdb

@@ -1,0 +1,6 @@
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\bin\Debug\BancoMatias.Entidades.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\bin\Debug\BancoMatias.Entidades.pdb
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\obj\Debug\BancoMatias.Entidades.csprojAssemblyReference.cache
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\obj\Debug\BancoMatias.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\obj\Debug\BancoMatias.Entidades.dll
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias.Entidades\obj\Debug\BancoMatias.Entidades.pdb
