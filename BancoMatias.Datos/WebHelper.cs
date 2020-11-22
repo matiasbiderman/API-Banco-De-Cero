@@ -11,35 +11,46 @@ namespace BancoMatias.Datos
 {
     public static class WebHelper
     {
-        static WebClient client;
-        static string rutaBase;
+
+        private static WebClient _client;
+        private static string _rutabase;
+
         static WebHelper()
         {
-            client = new WebClient();
-            client.Encoding = Encoding.UTF8;
-            rutaBase = ConfigurationManager.AppSettings["URL_API"];
-            client.Headers.Add("ContentType", "application/json");
+            _client = new WebClient();
+            _client.Encoding = Encoding.UTF8;
+            _rutabase = ConfigurationManager.AppSettings["URL_API"];
+
+            _client.Headers.Add("ContentType", "application/json");
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
+
         public static string Get(string url)
         {
-            string urlCompleta = rutaBase + url;
-            string responseString = client.DownloadString(urlCompleta);
+            var uri = _rutabase + url;
+
+            var responseString = _client.DownloadString(uri);
+
             return responseString;
         }
         public static string Post(string url, NameValueCollection parametros)
         {
-            string urlCompleta = rutaBase + url;
+            string uri = _rutabase + url;
+
             try
             {
-                var response = client.UploadValues(urlCompleta, parametros);
+                var response = _client.UploadValues(uri, parametros);
+
                 var responseString = Encoding.Default.GetString(response);
+
                 return responseString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "{ \"isOk\":false,\"id\":-1,\"error\":\"Error en el llamado al servicio\"}";
             }
+
         }
     }
 }
+

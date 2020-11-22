@@ -8,15 +8,15 @@ namespace BancoMatias.Negocio
 {
     public static class ValidacionesHelper
     {
-        public static string ValidarNumero(string num, string campo, ref int salida)
+        public static string ValidarNumero(string num, string campo)
         {
             string msj;
-
-            if (!Int32.TryParse(num, out salida))
+            int comprobacion = 0;
+            if (!int.TryParse(num, out comprobacion))
             {
                 msj = "El campo " + campo + " debe ingresar un valor numerico" + Environment.NewLine;
             }
-            else if (salida <= 0)
+            else if (comprobacion <= 0)
             {
                 msj = "El campo " + campo + " debe ser positivo" + Environment.NewLine;
             }

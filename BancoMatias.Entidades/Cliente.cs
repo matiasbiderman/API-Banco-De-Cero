@@ -33,15 +33,12 @@ namespace BancoMatias.Entidades
         public int DNI { get => _dni; set => _dni = value; }
 
         private string fechaNacimiento;
-        [DataMember]
-        public DateTime FechaNacimiento
-        {
-            get => Convert.ToDateTime(fechaNacimiento);
-            set => fechaNacimiento = value.ToString();
-        }
+        [DataMember(Name = "fechaNacimiento")]
+        public DateTime FechaNacimiento { get => _fechaNac; set => _fechaNac = value; }
 
         [DataMember(Name = "Direccion")]
         public string Direccion { get => _direccion; set => _direccion = value; }
+
         [DataMember(Name = "Email")]
         public string Email { get => _email; set => _email = value; }
 

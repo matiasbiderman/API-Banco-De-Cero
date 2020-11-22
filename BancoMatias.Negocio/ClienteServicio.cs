@@ -11,9 +11,11 @@ namespace BancoMatias.Negocio
     public class ClienteServicio
     {
         ClienteMapper mapper;
+        CuentaMapper mapperCuenta;
         public ClienteServicio()
         {
             mapper = new ClienteMapper();
+            mapperCuenta = new CuentaMapper();
         }
         public List<Cliente> TraerClientes()
         {
@@ -27,25 +29,51 @@ namespace BancoMatias.Negocio
 
             foreach (Cliente cliente in clientes)
             {
-                if(cliente.Activo == estado)
+                if (cliente.Activo == estado)
                 {
                     retorno.Add(cliente);
                 }
             }
             return retorno;
         }
-        public void AgregarCliente(Cliente cliente)
+        public List<Cliente> TraerPorCuentaExistente()
         {
-            TransactionResult resultado = mapper.InsertarCliente(cliente);
-            if (!resultado.IsOk)
+            List<Cliente> clientes = mapper.TraerTodos();
+            List<Cuenta> cuentas = mapperCuenta.TraerTodas();
+            List<Cliente> retorno = new List<Cliente>();
+
+            foreach (Cliente cliente in clientes)
             {
-                throw new Exception("Error al agregar cliente. Detalle: " + resultado.Error);
+                foreach (Cuenta cuenta in cuentas)
+                {
+                    //retorno.AddRange(cuentas.Where(cuenta => cuenta.IdCliente == cliente.Id));
+                    if (cuenta.IdCliente == cliente.Id)
+                    {
+                        retorno.Add(cliente);
+                    }
+                    /* }
+                     foreach (Cuenta cuenta in cuentas)
+                         {
+                             retorno.AddRange(clientes.Where(cliente => cliente.Id ==cuenta.IdCliente));
+                         }
+                         //return retorno.Distinct(o => o.Id);*/
+                    
+                }
+            }
+            return retorno;
+        }
+            public void AgregarCliente(Cliente cliente)
+            {
+                TransactionResult resultado = mapper.InsertarCliente(cliente);
+                if (!resultado.IsOk)
+                {
+                    throw new Exception("Error al agregar cliente. Detalle: " + resultado.Error);
+                }
+            }
+            public int ProximoId()
+            {
+                List<Cliente> cliente = TraerClientes();
+                return cliente.Max(c => c.Id) + 1;
             }
         }
-        public int ProximoId()
-        {
-            List<Cliente> cliente = TraerClientes();
-            return cliente.Max(c => c.Id) + 1;
-        }
     }
-}

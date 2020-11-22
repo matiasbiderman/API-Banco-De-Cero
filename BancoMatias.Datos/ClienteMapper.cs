@@ -33,19 +33,21 @@ namespace BancoMatias.Datos
         private NameValueCollection ReverseMap(Cliente cliente)
         {
             NameValueCollection n = new NameValueCollection();
-            n.Add("DNI", cliente.DNI.ToString());
+            n.Add("Dni", cliente.DNI.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);
-            n.Add("Telefono", cliente.Telefono);
+           n.Add("Telefono", cliente.Telefono);
             n.Add("Email", cliente.Email);
-            n.Add("FechaNacimiento", cliente.FechaNacimiento.ToString());
+           // n.Add("fechaNacimiento", cliente.FechaNacimiento.ToString());
             n.Add("Activo", cliente.Activo.ToString());
             n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
             n.Add("id", cliente.Id.ToString());
             return n;
+
+           
         }
-       
+
     }
 }
 

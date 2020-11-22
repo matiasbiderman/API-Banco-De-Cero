@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,11 @@ namespace BancoMatias
             listboxClientes.DataSource = null;
             listboxClientes.DataSource = _clienteServicio.TraerClientes();
         }
+        private void CargarListaCliente()
+        {
+            listboxClientes.DataSource = null;
+            listboxClientes.DataSource = _clienteServicio.TraerClientes();
+        }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e) //AGREGAR CLIENTE
         {
@@ -63,12 +69,13 @@ namespace BancoMatias
                 Cliente cliente = CargarCliente();
                 _clienteServicio.AgregarCliente(cliente);
                 MessageBox.Show("Cliente ingresado correctamente");
+                CargarListaCliente();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
         private Cliente CargarCliente()
         {
@@ -77,11 +84,32 @@ namespace BancoMatias
             string direccion = txtdireccion.Text;
             string mail = txtmail.Text;
             string telefono = txttelefono.Text;
-            int dni = Convert.ToInt32(txtdni.Text);
+            string dni = txtdni.Text;
             bool estado = checkBox1.Checked;
             DateTime fechanac = dateTimePicker1.Value;
-            Cliente cliente = new Cliente(dni, nombre, apellido, direccion, estado, mail, telefono, fechanac, _clienteServicio.ProximoId());
+
+            string msj = "";
+
+            msj += ValidacionesHelper.ValidarNumero(dni, "Dni");
+            msj += ValidacionesHelper.ValidarSTRING(nombre, "Nombre");
+            msj += ValidacionesHelper.ValidarSTRING(apellido, "Apellido");
+            msj += ValidacionesHelper.ValidarSTRING(direccion, "Direccion");
+            msj += ValidacionesHelper.ValidarSTRING(mail, "Email");
+            msj += ValidacionesHelper.ValidarSTRING(telefono, "Telefono");
+
+            if (!string.IsNullOrWhiteSpace(msj))
+            {
+                throw new Exception(msj.ToString());
+            }
+            Cliente cliente = new Cliente(Convert.ToInt32(dni), nombre, apellido, direccion, estado, mail, telefono, fechanac, _clienteServicio.ProximoId());
+
             return cliente;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Owner.Show();
+            this.Hide();
         }
     }
 }
