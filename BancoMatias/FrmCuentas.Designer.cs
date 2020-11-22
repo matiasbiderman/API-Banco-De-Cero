@@ -83,6 +83,7 @@
             // 
             // cmbCliente
             // 
+            this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(160, 42);
             this.cmbCliente.Name = "cmbCliente";
@@ -130,6 +131,7 @@
             // 
             // cmbdesc
             // 
+            this.cmbdesc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbdesc.FormattingEnabled = true;
             this.cmbdesc.Location = new System.Drawing.Point(177, 75);
             this.cmbdesc.Name = "cmbdesc";
@@ -166,6 +168,7 @@
             // 
             // cmbclienteagregar
             // 
+            this.cmbclienteagregar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbclienteagregar.FormattingEnabled = true;
             this.cmbclienteagregar.Location = new System.Drawing.Point(177, 164);
             this.cmbclienteagregar.Name = "cmbclienteagregar";
@@ -219,6 +222,7 @@
             // 
             this.txtnumerocuenta.Location = new System.Drawing.Point(177, 45);
             this.txtnumerocuenta.Name = "txtnumerocuenta";
+            this.txtnumerocuenta.ReadOnly = true;
             this.txtnumerocuenta.Size = new System.Drawing.Size(137, 20);
             this.txtnumerocuenta.TabIndex = 0;
             // 

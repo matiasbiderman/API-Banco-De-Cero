@@ -48,5 +48,10 @@ namespace BancoMatias.Negocio
             List<Cuenta> cuenta = TraerCuentas();
             return cuenta.Max(c => c.Id) + 1;
         }
+        public int ProximoNumeroCuenta()
+        {
+            List<Cuenta> cuenta = TraerCuentas();
+            return cuenta.Max(c => c.NroCuenta) + 1;
+        }
     }
 }

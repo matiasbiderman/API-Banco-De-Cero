@@ -36,6 +36,7 @@ namespace BancoMatias
         {
             cmbCliente.DataSource = null;
             cmbCliente.DataSource = clienteServ.TraerPorCuentaExistente();
+            txtnumerocuenta.Text = cuentaServ.ProximoNumeroCuenta().ToString();
             cmbdesc.DataSource = null;
             cmbdesc.DataSource = CargarDesc();
             cmbclienteagregar.DataSource = null;
@@ -73,6 +74,7 @@ namespace BancoMatias
                 MessageBox.Show("La cuenta fue correctamente agregada");
                 cmbCliente.DataSource = null;
                 cmbCliente.DataSource = clienteServ.TraerPorCuentaExistente();
+                txtnumerocuenta.Text = cuentaServ.ProximoNumeroCuenta().ToString();
             }
             catch (Exception ex)
             {

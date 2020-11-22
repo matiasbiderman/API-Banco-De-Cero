@@ -46,13 +46,14 @@ namespace BancoMatias.Negocio
             {
                 foreach (Cuenta cuenta in cuentas)
                 {
-                    //retorno.AddRange(cuentas.Where(cuenta => cuenta.IdCliente == cliente.Id));
                     if (cuenta.IdCliente == cliente.Id)
                     {
+                        if(!retorno.Contains(cliente))
                         retorno.Add(cliente);
                     }
                 }
             }
+           // retorno.AddRange(clientes.Where(cliente => cuentas.Select(cuenta => cuenta.IdCliente).Contains(cliente.Id)).ToList());
             return retorno;
         }
             /*public List<Cliente> TraerPorCuentaExistente()
