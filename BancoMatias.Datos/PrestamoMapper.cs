@@ -37,7 +37,7 @@ namespace BancoMatias.Datos
             n.Add("Plazo", p.Plazo.ToString());
             n.Add("idCliente", p.IdCliente.ToString());
             n.Add("idTipo", p.IdTipo.ToString());
-            n.Add("Cuota", p.Cuota.ToString());
+            n.Add("Cuota", p.CuotaTotal.ToString());
             n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
             return n;
             //n.Add("", p.TipoPrest.ToString());

@@ -28,13 +28,13 @@ namespace BancoMatias.Negocio
                 throw new Exception("Error al agregar empleado.Detalle: " + t.Error);
             }
         }
-        public double CalcularComision(double cuotaint)
+        public double CalcularComision()
         {
             double comision = 0;
             Operador operador = new Operador(mapper.TraerPrestamos());
             foreach (Prestamo p in operador.Prestamos)
             {
-                comision += cuotaint * operador.PorcentajeComision;
+                comision += p.CuotaInteres * operador.PorcentajeComision;
             }
             return comision;
         }

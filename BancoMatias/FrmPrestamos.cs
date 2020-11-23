@@ -30,7 +30,7 @@ namespace BancoMatias
             lstTipoPrestamo.DataSource = null;
             lstTipoPrestamo.DataSource = tiposervicio.TraerTipos();
             CargarListaPrestamo();
-            //CalculadoraComisionTotal();
+            CalculadoraComisionTotal();
             comboBox1.DataSource = null;
             comboBox1.DataSource = clienteserv.TraerPorCuentaExistente();
         }
@@ -47,7 +47,7 @@ namespace BancoMatias
         }
         private void CalculadoraComisionTotal()
         {
-            double comision = prestamoservicio.CalcularComision(double.Parse(txtcuotaint.Text));
+            double comision = prestamoservicio.CalcularComision();
             textBox8.Text = comision.ToString();
         }
         private void lstTipoPrestamo_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,14 +71,12 @@ namespace BancoMatias
             int idtipo = tipo.Id;
             Cliente cliente = (Cliente)comboBox1.SelectedItem;
             int idcliente = cliente.Id;
-            txtcuotacap.Text = (monto / plazo).ToString();
-            double cuotacap = double.Parse(txtcuotacap.Text);
-            txtcuotaint.Text = (cuotacap * (tna / 12 / 100)).ToString();
-            double cuotaint = double.Parse(txtcuotaint.Text);
-            double cuotatot = cuotacap + cuotaint;
-            txtcuotatot.Text = cuotatot.ToString();
-            Prestamo prestamo = new Prestamo(prestamoservicio.ProximoId(), linea, plazo, tna, monto, cuotatot, idcliente, idtipo);
-            return prestamo;
+            Prestamo p = new Prestamo(prestamoservicio.ProximoId(), linea, plazo, tna, monto, idcliente, idtipo);
+            txtcuotacap.Text = p.CuotaCapital.ToString();
+            txtcuotaint.Text = p.CuotaInteres.ToString();
+            txtcuotatot.Text = p.CuotaTotal.ToString();
+
+            return p;
         }
 
         private void btnalta_Click(object sender, EventArgs e)
