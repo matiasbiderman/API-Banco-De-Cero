@@ -39,7 +39,7 @@ namespace BancoMatias.Datos
             n.Add("Direccion", cliente.Direccion);
            n.Add("Telefono", cliente.Telefono);
             n.Add("Email", cliente.Email);
-           // n.Add("fechaNacimiento", cliente.FechaNacimiento.ToString());
+           n.Add("fechaNacimiento", cliente.FechaNacimiento.ToString("yyyy-MM-dd"));
             n.Add("Activo", cliente.Activo.ToString());
             n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
             n.Add("id", cliente.Id.ToString());

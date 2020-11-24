@@ -63,7 +63,7 @@ namespace BancoMatias.Entidades
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, Mail {3}, {4}, {5}", this.Nombre, this.Apellido, this.DNI, this.Email, this.Activo, this.FechaNacimiento);
+            return string.Format("{0}, {1}, {2}, Mail {3}, {4}, {5}", this.Nombre, this.Apellido, this.DNI, this.Email, this.Activo, this.FechaNacimiento.ToString("yyyy-MM-dd"));
         }
     }
 }
