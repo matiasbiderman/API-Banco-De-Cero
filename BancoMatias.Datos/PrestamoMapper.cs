@@ -33,7 +33,7 @@ namespace BancoMatias.Datos
             n.Add("Linea", p.Linea);
             n.Add("Monto", p.Monto.ToString() );
             n.Add("Id", p.Id.ToString() );
-            n.Add("TNA",p.Tna.ToString() );
+            n.Add("TNA",p.Tna.ToString().Replace(',', '.'));
             n.Add("Plazo", p.Plazo.ToString());
             n.Add("idCliente", p.IdCliente.ToString());
             n.Add("idTipo", p.IdTipo.ToString());

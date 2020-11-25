@@ -45,5 +45,13 @@ namespace BancoMatias
             formulario.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmTarjetas formulario = new FrmTarjetas();
+            formulario.Owner = this;
+            formulario.Show();
+            this.Hide();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace BancoMatias.Negocio
             Operador operador = new Operador(mapper.TraerPrestamos());
             foreach (Prestamo p in operador.Prestamos)
             {
-                comision += p.CuotaInteres * operador.PorcentajeComision;
+                comision += p.CuotaInteres * p.Plazo * operador.PorcentajeComision;
             }
             return comision;
         }

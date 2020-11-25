@@ -20,3 +20,4 @@ C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias\obj\Debug\BancoM
 C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias\obj\Debug\BancoMatias.pdb
 C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias\obj\Debug\BancoMatias.FrmCuentas.resources
 C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias\obj\Debug\BancoMatias.FrmPrestamos.resources
+C:\Users\Mati\Desktop\CAI\202002C\API-Banco-De-Cero\BancoMatias\obj\Debug\BancoMatias.FrmTarjetas.resources
