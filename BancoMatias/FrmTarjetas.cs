@@ -73,44 +73,86 @@ namespace BancoMatias
                 MessageBox.Show(ex.Message);
                 BlanquearCampos();
             }
+        }
 
+        private int AlgoritmoPeriodoSemanal()
+        {
+            string periodo = (string)cmbPeriodo.SelectedItem;
+            int periodoVencimiento = 0;
+            switch (periodo)
+            {
+                case "Primera Semana":
+                    periodoVencimiento = 1;
+                    break;
+                case "Segunda Semana":
+                    periodoVencimiento = 2;
+                    break;
+                case "Tercera Semana":
+                    periodoVencimiento = 3;
+                    break;
+                case "Cuarta Semana":
+                    periodoVencimiento = 4;
+                    break;
+            }
+            return periodoVencimiento;
+        }
+
+        private Tarjeta EntradaDatosFormulario()
+        {
+            int tipoTarjeta = (int)Tipo.Amex;
+            Tarjeta t = null;
+            int periodo = AlgoritmoPeriodoSemanal();
+            Cliente cliente = (Cliente)cmbCliente.SelectedItem;
+            int idcliente = cliente.Id;
+            double limite = double.Parse(txtlimite.Text);
+            string numero = txtnumplas.Text;
+            
+            string msj = "";
+
+            msj += ValidacionesHelper.ValidarNumero(limite.ToString(), "Limite Compra");
+            msj += ValidacionesHelper.ValidarSTRING(numero, "Numero de Plastico");
+
+            if (!string.IsNullOrWhiteSpace(msj))
+            {
+                throw new Exception(msj.ToString());
+            }
+            
+            t = new Tarjeta(tipoTarjeta, idcliente, limite, numero, periodo);
+            return t;
         }
         private Tarjeta CargarTarjeta()
         {
-            int tipoTarjeta = 0;
             Tarjeta t = null;
             string tipo = (string)cmbTipo.SelectedItem;
-            if (tipo == "AMEX")
+            if (!tarjetaServicio.ValidoLimiteCompra(clienteServicio.TraerPorCuentaExistente(), double.Parse(txtlimite.Text)))
             {
-                tipoTarjeta = (int)Tipo.Amex;
-                string periodo = (string)cmbPeriodo.SelectedItem;
-                Cliente cliente = (Cliente)cmbCliente.SelectedItem;
-                int idcliente = cliente.Id;
-                double limite = double.Parse(txtlimite.Text);
-                string numero = txtnumplas.Text;
-                t = new Tarjeta(tipoTarjeta, idcliente, limite, numero, 1);
+                if (tipo == "AMEX")
+                {
+                    if (txtnumplas.Text.Length == 15)
+                        t = EntradaDatosFormulario();
+                    else
+                        throw new Exception("Para AMEX el numero debe tener 15 digitos");
+                }
+                else if (tipo == "MasterCard")
+                {
+                    if (txtnumplas.Text.Length == 16)
+                        t = EntradaDatosFormulario();
+                    else
+                        throw new Exception("Para MasterCard el numero debe tener 15 digitos");
+                }
+                else if (tipo == "Visa")
+                {
+                    if (txtnumplas.Text.Length == 16)
+                        t = EntradaDatosFormulario();
+                    else
+                        throw new Exception("Para Visa el numero debe tener 15 digitos");
+                }
             }
-            else if (tipo == "MasterCard")
+            else
             {
-                tipoTarjeta = (int)Tipo.MasterCard;
-                string periodo = (string)cmbPeriodo.SelectedItem;
-                Cliente cliente = (Cliente)cmbCliente.SelectedItem;
-                int idcliente = cliente.Id;
-                double limite = double.Parse(txtlimite.Text);
-                string numero = txtnumplas.Text;
-                t = new Tarjeta(tipoTarjeta, idcliente, limite, numero, 1);
+                throw new Exception("Limite de compra mayor al saldo de la cuenta");
             }
-            else if (tipo == "Visa")
-            {
-                tipoTarjeta = (int)Tipo.Visa;
-                string periodo = (string)cmbPeriodo.SelectedItem;
-                Cliente cliente = (Cliente)cmbCliente.SelectedItem;
-                int idcliente = cliente.Id;
-                double limite = double.Parse(txtlimite.Text);
-                string numero = txtnumplas.Text;
-                t = new Tarjeta(tipoTarjeta, idcliente, limite, numero, 1);
-            }
-
+            
             if (t == null)
                 throw new Exception("tiene un error en la carga de la tarjeta, intente nuevamente");
             return t;

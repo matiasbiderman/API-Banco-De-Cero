@@ -104,5 +104,23 @@ namespace BancoMatias
             Cuenta cuenta = new Cuenta(cuentaServ.ProximoId(), int.Parse(nrocuenta), descripcion, idcli, estado, int.Parse(saldo));
             return cuenta;
         }
+
+        private void btnmodif_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                /*Cliente cliente = (Cliente)cmbCliente.SelectedItem;
+                int idcli = cliente.Id;*/
+                Cuenta cuenta = (Cuenta)listboxCuentas.SelectedItem;
+                int idcuenta = cuenta.Id;
+                cuentaServ.ModificarSaldo(float.Parse(txtsaldo.Text), idcuenta/*, idcli*/);
+                MessageBox.Show("El saldo fue cambiado y pasara a tener " + txtsaldo.Text + " de saldo");
+
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
     }
 }

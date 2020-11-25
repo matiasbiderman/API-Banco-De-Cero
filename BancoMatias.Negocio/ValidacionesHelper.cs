@@ -25,7 +25,6 @@ namespace BancoMatias.Negocio
                 msj = "";
             }
             return msj;
-
         }
         public static string ValidarSTRING(string dato, string campo)
         {
@@ -40,8 +39,8 @@ namespace BancoMatias.Negocio
                 msj = "";
             }
             return msj;
-
         }
+       
         public static string ValidarSaldo(string num, string campo, ref float salida)
         {
             string msj;

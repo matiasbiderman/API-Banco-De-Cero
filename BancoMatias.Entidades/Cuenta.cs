@@ -45,5 +45,6 @@ namespace BancoMatias.Entidades
         {
             return string.Format("{0},{1}, {2}", this.Saldo, this.NroCuenta, this.Descripcion);
         }
+        public Cuenta() { }
     }
 }

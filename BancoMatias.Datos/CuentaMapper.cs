@@ -19,7 +19,24 @@ namespace BancoMatias.Datos
             List<Cuenta> cuentas = JsonConvert.DeserializeObject<List<Cuenta>>(json); // con esto me ahorro hacer el maplist
             return cuentas;
         }
+        public TransactionResult Update(Cuenta cuenta)
+        {
+            NameValueCollection obj = Reverse(cuenta);
 
+            string result = WebHelper.Post("/cuenta", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+        private NameValueCollection Reverse(Cuenta cuenta)
+        {
+
+            NameValueCollection n = new NameValueCollection();
+            n.Add("id", cuenta.Id.ToString());
+            n.Add("Saldo", cuenta.Saldo.ToString());
+            return n;
+        }
         public List<Cuenta> TraerPorCliente(int id)
         {
             string json = WebHelper.Get("/cuenta/" + id.ToString());

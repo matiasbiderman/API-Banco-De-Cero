@@ -29,12 +29,31 @@ namespace BancoMatias.Negocio
             }
             return retorno;
         }
+        public void ModificarSaldo(float saldo, int idcuenta)
+        {
+            Cuenta c = new Cuenta();
+
+            if (saldo < 0)
+                throw new Exception("El saldo debe ser mayor a 0.");
+
+            if (idcuenta <= 0)
+                throw new Exception("Debe ser un id de cuenta valido.");
+
+            TransactionResult t = mapper.Update(c);
+
+            if (!t.IsOk)
+            {
+                throw new Exception("Error al modificar el saldo de la cuenta. " + t.Error);
+            }
+           
+        }
         public List<Cuenta> TraerCuentas()
         {
             List<Cuenta> cuentas = mapper.TraerTodas();
             
             return cuentas;
         }
+       
         public void AgregarCuenta(Cuenta cuenta)
         {
             TransactionResult resultado = mapper.InsertarCuenta(cuenta);

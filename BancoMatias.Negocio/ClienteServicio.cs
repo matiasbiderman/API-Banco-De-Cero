@@ -56,14 +56,7 @@ namespace BancoMatias.Negocio
            // retorno.AddRange(clientes.Where(cliente => cuentas.Select(cuenta => cuenta.IdCliente).Contains(cliente.Id)).ToList());
             return retorno;
         }
-            /*public List<Cliente> TraerPorCuentaExistente()
-            {
-                List<Cliente> clientes = mapper.TraerTodos();
-                List<Cuenta> cuentas = mapperCuenta.TraerTodas();
-                List<Cliente> retorno = new List<Cliente>();
-
-                return clientes.Where(cli => cli.Id == cuentas.Single(cta => cta.Id == cli.Id)).ToList();
-            */
+            
             public void AgregarCliente(Cliente cliente)
             {
                 TransactionResult resultado = mapper.InsertarCliente(cliente);

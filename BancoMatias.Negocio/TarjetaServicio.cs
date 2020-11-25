@@ -11,8 +11,10 @@ namespace BancoMatias.Negocio
     public class TarjetaServicio
     {
         private TarjetaMapper mapper;
+        private CuentaMapper mapperCuenta;
         public TarjetaServicio()
         {
+            mapperCuenta = new CuentaMapper();
             mapper = new TarjetaMapper();
         }
 
@@ -28,6 +30,27 @@ namespace BancoMatias.Negocio
             {
                 throw new Exception("No se puede agregar tarjeta. Detalle: " + t.Error);
             }
+        }
+
+        public bool ValidoLimiteCompra(List<Cliente> clientes, double limite)
+        {
+            bool retorno = false;
+            double resultado = limite * 18;
+            List<Cuenta> cuentas = mapperCuenta.TraerTodas();
+            foreach (Cliente cliente in clientes)
+            {
+                foreach (Cuenta cuenta in cuentas)
+                {
+                    if (cuenta.IdCliente == cliente.Id)
+                    {
+                       if(resultado > cuenta.Saldo)
+                        {
+                            retorno = true;
+                        }
+                    }
+                }
+            }
+            return retorno;
         }
     }
 }

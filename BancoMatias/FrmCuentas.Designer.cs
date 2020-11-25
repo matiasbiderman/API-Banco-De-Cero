@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtsaldo = new System.Windows.Forms.TextBox();
             this.txtnumerocuenta = new System.Windows.Forms.TextBox();
+            this.btnmodif = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +103,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Controls.Add(this.btnmodif);
             this.panel2.Controls.Add(this.btnVolver);
             this.panel2.Controls.Add(this.cmbdesc);
             this.panel2.Controls.Add(this.btnAgregar);
@@ -226,6 +228,16 @@
             this.txtnumerocuenta.Size = new System.Drawing.Size(137, 20);
             this.txtnumerocuenta.TabIndex = 0;
             // 
+            // btnmodif
+            // 
+            this.btnmodif.Location = new System.Drawing.Point(17, 214);
+            this.btnmodif.Name = "btnmodif";
+            this.btnmodif.Size = new System.Drawing.Size(122, 23);
+            this.btnmodif.TabIndex = 15;
+            this.btnmodif.Text = "Modificar Saldo";
+            this.btnmodif.UseVisualStyleBackColor = true;
+            this.btnmodif.Click += new System.EventHandler(this.btnmodif_Click);
+            // 
             // FrmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,5 +277,6 @@
         private System.Windows.Forms.ComboBox cmbdesc;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnmodif;
     }
 }
