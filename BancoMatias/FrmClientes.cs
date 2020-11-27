@@ -84,13 +84,14 @@ namespace BancoMatias
             string direccion = txtdireccion.Text;
             string mail = txtmail.Text;
             string telefono = txttelefono.Text;
-            string dni = txtdni.Text;
+           
             bool estado = checkBox1.Checked;
             DateTime fechanac = dateTimePicker1.Value;
 
             string msj = "";
 
-            msj += ValidacionesHelper.ValidarNumero(dni, "Dni");
+            msj += ValidacionesHelper.ValidarFecha(fechanac);
+            msj += ValidacionesHelper.ValidarInt(txtdni.Text, "Dni");
             msj += ValidacionesHelper.ValidarSTRING(nombre, "Nombre");
             msj += ValidacionesHelper.ValidarSTRING(apellido, "Apellido");
             msj += ValidacionesHelper.ValidarSTRING(direccion, "Direccion");
@@ -101,7 +102,8 @@ namespace BancoMatias
             {
                 throw new Exception(msj.ToString());
             }
-            Cliente cliente = new Cliente(Convert.ToInt32(dni), nombre, apellido, direccion, estado, mail, telefono, fechanac, _clienteServicio.ProximoId());
+            int dni = int.Parse(txtdni.Text);
+            Cliente cliente = new Cliente(dni, nombre, apellido, direccion, estado, mail, telefono, fechanac, _clienteServicio.ProximoId());
 
             return cliente;
         }

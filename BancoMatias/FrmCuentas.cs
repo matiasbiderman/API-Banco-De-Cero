@@ -85,23 +85,24 @@ namespace BancoMatias
         {
 
             string descripcion = (string)cmbdesc.SelectedItem;
-            string nrocuenta = txtnumerocuenta.Text;
             Cliente cliente = (Cliente)cmbclienteagregar.SelectedItem;
             int idcli = cliente.Id;
-            string saldo = txtsaldo.Text;
+            
             bool estado = checkBox1.Checked;
 
             string msj = "";
 
-            msj += ValidacionesHelper.ValidarNumero(saldo, "Saldo");
-            msj += ValidacionesHelper.ValidarNumero(nrocuenta, "Numero de Cuenta");
+            msj += ValidacionesHelper.ValidarFloat(txtsaldo.Text, "Saldo");
+            msj += ValidacionesHelper.ValidarInt(txtnumerocuenta.Text, "Numero de Cuenta");
             msj += ValidacionesHelper.ValidarSTRING(descripcion, "Descripcion");
 
             if (!string.IsNullOrWhiteSpace(msj))
             {
                 throw new Exception(msj.ToString());
             }
-            Cuenta cuenta = new Cuenta(cuentaServ.ProximoId(), int.Parse(nrocuenta), descripcion, idcli, estado, int.Parse(saldo));
+            float saldo = float.Parse(txtsaldo.Text);
+            int nrocuenta = int.Parse(txtnumerocuenta.Text);
+            Cuenta cuenta = new Cuenta(cuentaServ.ProximoId(), nrocuenta, descripcion, idcli, estado, saldo);
             return cuenta;
         }
 

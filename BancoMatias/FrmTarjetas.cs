@@ -71,7 +71,7 @@ namespace BancoMatias
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                BlanquearCampos();
+                //BlanquearCampos();
             }
         }
 
@@ -104,19 +104,19 @@ namespace BancoMatias
             int periodo = AlgoritmoPeriodoSemanal();
             Cliente cliente = (Cliente)cmbCliente.SelectedItem;
             int idcliente = cliente.Id;
-            double limite = double.Parse(txtlimite.Text);
             string numero = txtnumplas.Text;
             
             string msj = "";
 
-            msj += ValidacionesHelper.ValidarNumero(limite.ToString(), "Limite Compra");
+            msj += ValidacionesHelper.ValidarDouble(txtlimite.Text, "Limite Compra");
             msj += ValidacionesHelper.ValidarSTRING(numero, "Numero de Plastico");
 
             if (!string.IsNullOrWhiteSpace(msj))
             {
                 throw new Exception(msj.ToString());
             }
-            
+
+            double limite = double.Parse(txtlimite.Text);
             t = new Tarjeta(tipoTarjeta, idcliente, limite, numero, periodo);
             return t;
         }
@@ -124,34 +124,34 @@ namespace BancoMatias
         {
             Tarjeta t = null;
             string tipo = (string)cmbTipo.SelectedItem;
-            if (!tarjetaServicio.ValidoLimiteCompra(clienteServicio.TraerPorCuentaExistente(), double.Parse(txtlimite.Text)))
+         //   if (!tarjetaServicio.ValidoLimiteCompra(clienteServicio.TraerPorCuentaExistente(), double.Parse(txtlimite.Text)))
             {
                 if (tipo == "AMEX")
                 {
-                    if (txtnumplas.Text.Length == 15)
+                   if (txtnumplas.Text.Length == 15)
                         t = EntradaDatosFormulario();
-                    else
-                        throw new Exception("Para AMEX el numero debe tener 15 digitos");
+                   else
+                       throw new Exception("Para AMEX el numero debe tener 15 digitos");
                 }
                 else if (tipo == "MasterCard")
                 {
                     if (txtnumplas.Text.Length == 16)
                         t = EntradaDatosFormulario();
                     else
-                        throw new Exception("Para MasterCard el numero debe tener 15 digitos");
+                        throw new Exception("Para MasterCard el numero debe tener 16 digitos");
                 }
                 else if (tipo == "Visa")
                 {
                     if (txtnumplas.Text.Length == 16)
                         t = EntradaDatosFormulario();
                     else
-                        throw new Exception("Para Visa el numero debe tener 15 digitos");
+                        throw new Exception("Para Visa el numero debe tener 16 digitos");
                 }
             }
-            else
+           /* else
             {
                 throw new Exception("Limite de compra mayor al saldo de la cuenta");
-            }
+            }*/
             
             if (t == null)
                 throw new Exception("tiene un error en la carga de la tarjeta, intente nuevamente");

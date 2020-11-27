@@ -8,17 +8,31 @@ namespace BancoMatias.Negocio
 {
     public static class ValidacionesHelper
     {
-        public static string ValidarNumero(string num, string campo)
+        public static string ValidarFecha(DateTime fecha)
+        {
+            string msj = "";
+            if (fecha.AddYears(18) > DateTime.Today)
+            {
+                msj = "El cliente ingresado es menor de edad\n";// + Environment.NewLine;
+            }
+            return msj;
+        }
+        public static string ValidarDouble(string num, string campo)
         {
             string msj;
-            int comprobacion = 0;
-            if (!int.TryParse(num, out comprobacion))
+            double comprobacion = 0;
+
+            if (string.IsNullOrEmpty(num))
             {
-                msj = "El campo " + campo + " debe ingresar un valor numerico" + Environment.NewLine;
+                msj = "El campo " + campo + " no debe estar vacio\n";// + Environment.NewLine;
+            }
+            else if (!double.TryParse(num, out comprobacion))
+            {
+                msj = "El campo " + campo + " debe ingresar un valor numerico\n";// + Environment.NewLine;
             }
             else if (comprobacion <= 0)
             {
-                msj = "El campo " + campo + " debe ser positivo" + Environment.NewLine;
+                msj = "El campo " + campo + " debe ser positivo\n";// + Environment.NewLine;
             }
             else
             {
@@ -32,7 +46,7 @@ namespace BancoMatias.Negocio
 
             if (string.IsNullOrWhiteSpace(dato))
             {
-                msj = "El campo " + campo + " no debe estar vacio" + Environment.NewLine;
+                msj = "El campo " + campo + " no debe estar vacio\n";// + Environment.NewLine;
             }
             else
             {
@@ -40,45 +54,52 @@ namespace BancoMatias.Negocio
             }
             return msj;
         }
-       
-        public static string ValidarSaldo(string num, string campo, ref float salida)
+
+        public static string ValidarInt(string num, string campo)
         {
             string msj;
+            int comprobacion = 0;
 
-            if (!float.TryParse(num, out salida))
+            if (string.IsNullOrEmpty(num))
             {
-                msj = "El campo " + campo + " debe ingresar un valor numerico" + Environment.NewLine;
+                msj = "El campo " + campo + " no debe estar vacio\n";// + Environment.NewLine;
             }
-            else if (salida <= 0)
+            else if (!int.TryParse(num, out comprobacion))
             {
-                msj = "El campo " + campo + " debe ser positivo" + Environment.NewLine;
+                msj = "El campo " + campo + " debe ingresar un valor numerico\n"; //+ Environment.NewLine;
+            }
+            else if (comprobacion <= 0)
+            {
+                msj = "El campo " + campo + " debe ser positivo\n";// + Environment.NewLine;
             }
             else
             {
                 msj = "";
             }
             return msj;
-
         }
-
-        public static string ValidarMonto(string num, string campo, ref double salida)
+        public static string ValidarFloat(string num, string campo)
         {
             string msj;
+            float comprobacion = 0;
 
-            if (!double.TryParse(num, out salida))
+            if (string.IsNullOrEmpty(num))
             {
-                msj = "El campo " + campo + " debe ingresar un valor numerico" + Environment.NewLine;
+                msj = "El campo " + campo + " no debe estar vacio\n";// + Environment.NewLine;
             }
-            else if (salida <= 0)
+            else if (!float.TryParse(num, out comprobacion))
             {
-                msj = "El campo " + campo + " debe ser positivo" + Environment.NewLine;
+                msj = "El campo " + campo + " debe ingresar un valor numerico\n";// + Environment.NewLine;
+            }
+            else if (comprobacion <= 0)
+            {
+                msj = "El campo " + campo + " debe ser positivo\n";//+ Environment.NewLine;
             }
             else
             {
                 msj = "";
             }
             return msj;
-
         }
     }
 }

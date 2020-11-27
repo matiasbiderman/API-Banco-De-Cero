@@ -224,7 +224,6 @@
             // 
             this.txtnumerocuenta.Location = new System.Drawing.Point(177, 45);
             this.txtnumerocuenta.Name = "txtnumerocuenta";
-            this.txtnumerocuenta.ReadOnly = true;
             this.txtnumerocuenta.Size = new System.Drawing.Size(137, 20);
             this.txtnumerocuenta.TabIndex = 0;
             // 
